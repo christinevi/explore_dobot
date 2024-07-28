@@ -1,0 +1,65 @@
+import threading
+import DobotDllType as dType
+from serial.tools import  list_ports
+
+import os
+
+os.add_dll_directory("C:\\Users\\sriva\\OneDrive\\Desktop\\NIU (3_12)\\DobotDemoForPython")
+
+
+#expanded the dictionary with more communication issues: useful for things like suctioncup rather than just connecting to the computer
+CON_STR = {
+    dType.DobotConnect.DobotConnect_NoError:  "DobotConnect_NoError",
+    dType.DobotConnect.DobotConnect_NotFound: "DobotConnect_NotFound",
+    dType.DobotConnect.DobotConnect_Occupied: "DobotConnect_Occupied",
+    dType.DobotCommunicate.DobotCommunicate_NoError: "DobotCommunicate_NoError",
+    dType.DobotCommunicate.DobotCommunicate_BufferFull: "DobotCommunicate_BufferFull",
+    dType.DobotCommunicate.DobotCommunicate_Timeout: "DobotCommunicate_Timeout"
+    }
+
+#Load Dll #change that name to api one once we add more dobots
+api = dType.load()
+
+#list of all parts with the Dobot descriptor
+
+#Connect Dobot
+Dobot1 = dType.ConnectDobot(api, "", 115200)[0]
+print("Connect status:",CON_STR[Dobot1])
+
+if (Dobot1 == dType.DobotConnect.DobotConnect_NoError):
+    dType.SetHOMEParams(api, 250, 0, 50, 0, isQueued = 0)
+    dType.SetPTPJointParams(api, 200, 200, 200, 200, 200, 200, 200, 200, isQueued = 0)
+    dType.SetPTPCommonParams(api, 100, 100, isQueued = 0)
+    i = 0
+    # change those coordinate points as needed once you get in the lab ALSO CHANGE MODE OF JUMP or maybe no need of changing it
+    while i < 3:
+     result1 = dType.SetPTPCmd(api, dType.PTPMode.PTPMOVLXYZMode,228,0,-8,0,isQueued = 0)[0]
+    
+     dType.dSleep(200)
+     #print("Connection status1:", CON_STR[result1])
+     enablectrl = True
+     suctionon = True
+     suctionoff = False
+     result2 = dType.SetEndEffectorSuctionCup(api, enablectrl, suctionon, isQueued = 0)[0] 
+     #print("Connection status2:", CON_STR[result2])
+     dType.dSleep(200)
+     result3 = dType.SetPTPCmd(api, dType.PTPMode.PTPMOVLXYZMode,228,0,-44,0,isQueued = 0)[0]
+     #print("Connection status3:", CON_STR[result3])
+     dType.dSleep(200)
+     result4 = dType.SetPTPJumpParams(api, 50, 200, isQueued=0)[0]
+     #print("Connection status4:", CON_STR[result4])
+     dType.dSleep(200)
+     z= i * 34
+     result5 = dType.SetPTPCmd(api,dType.PTPMode.PTPMOVLXYZMode,228,-80,-42 + z,0,isQueued=0 )[0]
+     #print("Connection status5:", CON_STR[result5])
+     dType.dSleep(200)
+     result6 = dType.SetEndEffectorSuctionCup(api, enablectrl, suctionoff, isQueued = 0)[0]
+     #print("Connection status6:", CON_STR[result6])
+     dType.dSleep(200)
+     result7 = dType.SetPTPCmd(api,dType.PTPMode.PTPMOVLXYZMode,228,-80,50,0,isQueued=0 )[0]
+     #print("Connection status7:", CON_STR[result7])
+     i+=1
+ #Disconnect Dobot
+    dType.DisconnectDobot(api)
+ 
+
