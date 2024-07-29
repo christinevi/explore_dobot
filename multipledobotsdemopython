@@ -1,0 +1,109 @@
+import threading
+import DobotDllType as dType
+from serial.tools import  list_ports
+import os
+
+os.add_dll_directory("C:\\Users\\sriva\\OneDrive\\Desktop\\NIU (3_12)\\DobotDemoForPython") # lets python 3.12 search inside
+# local folders to find the DobotD11Type (create your own directory)
+
+#dictionary to tell what is going on with the robot
+#expanded the dictionary with communication issues rather than just connectivity issues
+CON_STR = {
+    dType.DobotConnect.DobotConnect_NoError:  "DobotConnect_NoError", #no error enum code is 0
+    dType.DobotConnect.DobotConnect_NotFound: "DobotConnect_NotFound", 
+    dType.DobotConnect.DobotConnect_Occupied: "DobotConnect_Occupied",
+    dType.DobotCommunicate.DobotCommunicate_NoError: "DobotCommunicate_NoError",
+    dType.DobotCommunicate.DobotCommunicate_BufferFull: "DobotCommunicate_BufferFull",
+    dType.DobotCommunicate.DobotCommunicate_Timeout: "DobotCommunicate_Timeout"
+    }
+
+#giving me all available ports and describing them
+current_ports = list_ports.comports()
+for port in current_ports:
+    print("Port: {}, Description: {}, Name: {}".format(port.device, port.description, port.name))
+
+# instantiating two robots
+
+apidobot1 = dType.load()
+apidobot2 = dType.load()
+
+#connecting to robot2
+dobot2 = dType.ConnectDobot(apidobot2, current_ports[1].device, 115200 )[0] 
+#first para is api key, second is what port, third is default baud rate for dobot
+
+print("Connect status:",CON_STR[dobot2]) #prints me the connect status
+
+if(dobot2 != dType.DobotConnect.DobotConnect_NoError):
+    dType.DisconnectDobot(apidobot2)
+#disconnects the dobot if the connect status isn't correct...makes the rest lines of code not work
+
+dType.SetQueuedCmdClear(apidobot2) #can try running the code without this line
+dType.SetHOMEParams(apidobot2, 250, 0, 50, 0, isQueued = 0)
+dType.SetPTPJointParams(apidobot2, 20, 20, 20, 20, 20, 20, 20, 20, isQueued = 0)
+dType.SetPTPCommonParams(apidobot2, 100, 100, isQueued = 0)
+#first 4 set up homing and how fast the robot's joints can move
+
+dType.SetEndEffectorGripper(apidobot2, True, False, isQueued= 1)[0] #opens the gripper
+    
+movement1 = dType.SetPTPCmd(apidobot2,dType.PTPMode.PTPMOVJXYZMode,154.2711,-124.4,-17.842,-113.1156,isQueued=1 )[0]
+    #SetPTPCmd makes the robot move to given coordinates for x, y, z, and r 
+    #ADUJUST THESE COORDINATES ACCORDINGLY
+    #Moves the robot to pick up the block
+    # when isQueued is equal to 0, it means the movement is exec immeaditley 
+    
+dType.dSleep(400)
+    #makes the robot wait to execute the next move
+
+dType.SetEndEffectorGripper(apidobot2, True, True, isQueued= 1)[0]
+    #first para is for what robot, second is if you want to give control, third is if you want gripper on or off
+    # when isQueued is equal to 0, it means the movement is exec immeaditley 
+    #closes onto the block
+    
+dType.dSleep(400)
+    #makes the robot wait to execute the next move
+    
+dType.SetPTPCmd(apidobot2, dType.PTPMode.PTPMOVJXYZMode, 241.2942, -4.2086, 65.8631, -113.1156, isQueued=0)[0]
+    #moves block onto conveyer belt
+    #ADJUST THE COORDINATES ACCORDINLY  x, y, z, and r 
+    
+dType.dSleep(400)
+    #makes the robot wait
+
+movement3 = dType.SetPTPJumpParams(apidobot2, 120, 200, isQueued=0)[0]
+    #jumps up (can try without this movement and see what happens)
+
+dType.SetEndEffectorGripper(apidobot2, True, False, isQueued= 0)[0]
+    #opens the gripper to release the block
+
+dType.dSleep(11000) #this helps the first robot to wait until all the commands are done
+
+#connecting to robot one
+dobot1 = dType.ConnectDobot(apidobot1, current_ports[0].device, 115200 )[0] 
+print("Connect status:",CON_STR[dobot1])  
+
+dType.SetHOMEParams(apidobot1, 250, 0, 50, 0, isQueued = 0)
+dType.SetPTPJointParams(apidobot1, 20, 20, 20, 20, 20, 20, 20, 20, isQueued = 0)
+dType.SetPTPCommonParams(apidobot1, 100, 100, isQueued = 0)
+#these 3 methods set up homing and how fast the robot's joints can move
+
+#moving the conveyer belt to the second robot
+dType.SetEMotorSEx(apidobot1, 0, 1, 10000, 29000, 1) #5th parameter is the distance the belt moves
+
+dType.SetEndEffectorSuctionCup(apidobot1, True, True, isQueued = 0)[0] #ons the suction
+
+movement4 = dType.SetPTPCmd(apidobot1, dType.PTPMode.PTPMOVJXYZMode, 130.3187, 134.78, 16.93, 0, isQueued=1)[0]
+#moves the robotic arm to where the block is on the conveyer belt
+#ADJUST COORDINATES AS NEEDED
+
+movement5 = dType.SetPTPJumpParams(apidobot1, 50, 200, isQueued=0)[0]
+#jumps up with the block on the suction cup
+
+movement6 = dType.SetPTPCmd(apidobot2, dType.PTPMode.PTPMOVJXYZMode, 170.1271, -7.1190, 31.6551, 0, isQueued=1)[0]
+#moves the block to a spot away from the conveyer belt
+#ADJUST COORDINATES AS NEEDED
+
+dType.SetEndEffectorSuctionCup(apidobot1, True, False, isQueued = 1)[0]
+#Closes the suction cup
+
+dType.DisconnectDobot(apidobot2) #disconnects dobot2 (the first robot that did all the movements)
+dType.DisconnectDobot(apidobot1) #disconnects dobot1
