@@ -28,6 +28,8 @@ https://github.com/luismesas/pydobot: original pydobot
 ## Setup Code Instructions
 download latest 32 bit python version suitable for your computer: https://www.python.org/downloads/release/python-3120/
 
+I AM USING Python 3.12 32 bit version for Windows
+
 install VS studio code: https://code.visualstudio.com/docs/setup/setup-overview
 
 create virtual envirnoment on VS studio code with latest python 32 bit version as interpreter: https://code.visualstudio.com/docs/python/environments
