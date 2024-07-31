@@ -26,6 +26,9 @@ https://github.com/sammydick22/pydobotplus: improved pydobot library
 https://github.com/luismesas/pydobot: original pydobot
 
 ## Setup Code Instructions
+
+#have to add the file to download magacian studio
+
 download latest 32 bit python version suitable for your computer: https://www.python.org/downloads/release/python-3120/
 
 I AM USING Python 3.12 32 bit version for Windows
