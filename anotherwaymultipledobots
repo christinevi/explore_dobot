@@ -86,6 +86,7 @@ if(dobot2 == dType.DobotConnect.DobotConnect_NoError):
     #a small wait before moving away from the block
     
     movement4 = dType.SetPTPCmd(apidobot2,dType.PTPMode.PTPMOVJXYZMode,155.2711,-181.0558,60,-132.6135,isQueued=1 )[0]
+
     #makes the robot get out of the way for the second robot
     
     dType.dSleep(11000)
@@ -98,10 +99,11 @@ if(dobot2 == dType.DobotConnect.DobotConnect_NoError):
 dobot1 = dType.ConnectDobot(apidobot1, current_ports[0].device, 115200 )[0] 
 print("Connect status:",CON_STR[dobot1])
 
-def moveforyellow():
+def moveforyellow():  #did this for a yellow block, that is why it's named move for yellow... this works for any color block
+    
     dType.SetEndEffectorSuctionCup(apidobot1, True, True, isQueued = 0)[0] #ons the suction
 
-    movement4 = dType.SetPTPCmd(apidobot1, dType.PTPMode.PTPMOVJXYZMode, 162.7166, -116.3924, 16.2145, 0, isQueued=0)[0]
+    movement4 = dType.SetPTPCmd(apidobot1, dType.PTPMode.PTPMOVJXYZMode, 170.1659, -37.9563, 15.0173, 0, isQueued=0)[0]
     #moves the robotic arm to where the block is on the conveyer belt
     #ADJUST COORDINATES AS NEEDED
 
