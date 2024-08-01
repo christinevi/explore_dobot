@@ -2,6 +2,8 @@
 ## Required Equipment and Setup:
 Dobot Magician('s) that are already set up with suction, gripper, and/or conveyer belt
 
+Helpful github page that gives instructions of how to set up Dobot plus how to download control software: https://github.com/SERLatBTH/StarterGuide-DobotMagician?tab=readme-ov-file
+
 Helpful vid to connect Dobot to conveyer belt: https://www.youtube.com/watch?v=1Gh26EeiiGM
 
 Helpful vid to connect Dobot to gripper: https://www.youtube.com/watch?v=UfoEkJWgask
@@ -20,6 +22,7 @@ install V2 dobot files and unzip them: https://www.dobot.us/download/dobot-demo-
 install driver suitable for your computer: https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads
 ## Helpful pages
 describes many important features of the dobot api: https://github.com/SERLatBTH/StarterGuide-Dobot-Magician-with-Python
+giv
 ### Resourses to try pydobot, a peer grown library to control dobots
 https://github.com/sammydick22/pydobotplus: improved pydobot library
 
@@ -27,7 +30,7 @@ https://github.com/luismesas/pydobot: original pydobot
 
 ## Setup Code Instructions
 
-#have to add the file to download magacian studio
+download Dobot Demo (DOBOT Magician) v2.3 · Aug 23, 2021 off of https://www.dobot-robots.com/service/download-center?keyword=&products%5B%5D=316
 
 download latest 32 bit python version suitable for your computer: https://www.python.org/downloads/release/python-3120/
 
