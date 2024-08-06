@@ -11,10 +11,10 @@ Helpful vid to connect Dobot to gripper: https://www.youtube.com/watch?v=UfoEkJW
 A working webcam setup is required to use opencv (I am using an intel webcam)
 
 ## What will be covered:
-- How to control one Dobot
-- How to control multiple Dobots
-- How to control conveyer belt
-- How to use opencv adjacent to dobots (detecting the largest areas of yellow and green and capturing the center of that object)(though the center is captured, it is not being used in the project, only the color detection part is)
+- How to control one Dobot: stackingblockscode
+- How to control multiple Dobots: multipledobotspythondemo and anotherwaymultipledobots
+- How to control conveyer belt: multipledobotspythondemo, anotherwaymultipledobots, and finalprojectopencv
+- How to use opencv adjacent to dobots (detecting the largest areas of yellow and green and capturing the center of that object)(though the center is captured, it is not being used in the project, only the color detection part is): finalprojectopencv and opencvmethods
 
 ## How to improve this project:
  - detect all shapes and then find the center of that object WITHOUT sorting by color
