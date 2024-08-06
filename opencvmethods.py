@@ -46,6 +46,7 @@ def find_yellow_block(cap):
                     cv2.circle(result, (x,y), 5, (0,0,255), -1)
                     label = f"Corner {count}"
                     cv2.putText(result, label, (x + 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
+                    #comment or uncomment the 3 above lines of code as needed
                     #print(f"Corner {count}: (x: {x}, y: {y})")  # Print each corner's coordinates
 
             max_distance = 0
@@ -260,7 +261,7 @@ def find_center_block_green(cap):
         if cv2.waitKey(1) & 0xFF == ord('q'):
             return (centerX, centerY), colorofblock
         
-#works universally for all shapes but this is less accurate... for dobot better to use previous two
+#works universally for all shapes but this is less accurate... for dobot better to use first two shapes
 def find_center_block_yellow(cap):
     sumX = 0
     sumY = 0
