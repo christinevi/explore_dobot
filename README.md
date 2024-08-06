@@ -55,6 +55,6 @@ in the DobotDemoForPython folder read DobotD11Type.py and DobotControl.py to und
 
 pip install cv2 and pySerial
 
-copy and paste my opencvmethods code into a new file in your virtual workspace and name the file opencvmethods.py
+copy and paste my opencvmethods code into a new file in your virtual workspace and name the file opencvmethods.py if you want to use my finalprojectopencv file
 
 
