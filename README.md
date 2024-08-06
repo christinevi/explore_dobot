@@ -15,6 +15,8 @@ A working webcam setup is required to use opencv (I am using an intel webcam)
 - How to control multiple Dobots: multipledobotspythondemo and anotherwaymultipledobots
 - How to control conveyer belt: multipledobotspythondemo, anotherwaymultipledobots, and finalprojectopencv
 - How to use opencv adjacent to dobots (detecting the largest areas of yellow and green and capturing the center of that object)(though the center is captured, it is not being used in the project, only the color detection part is): finalprojectopencv and opencvmethods
+    - find_yellow_block and find_green_block methods work well for any shape other than triangles.
+    - The find_center_yellow_block and find_center_green_block methods work to approximate the center of all shapes, including triangles, as they use the centroid method to do it. However, they are very average at approximating the center compared to the find_yellow_block and find_green_block methods.
 
 ## How to improve this project:
  - detect all shapes and then find the center of that object WITHOUT sorting by color
