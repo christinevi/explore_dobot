@@ -2,7 +2,7 @@
 ## Required Equipment and Setup:
 Dobot Magician('s) that are already set up with suction, gripper, and/or conveyer belt
 
-Helpful github page that gives instructions of how to set up Dobot plus how to download control software: https://github.com/SERLatBTH/StarterGuide-DobotMagician?tab=readme-ov-file
+Helpful github page that gives instructions of how to set up Dobot: https://github.com/SERLatBTH/StarterGuide-DobotMagician?tab=readme-ov-file
 
 Helpful vid to connect Dobot to conveyer belt: https://www.youtube.com/watch?v=1Gh26EeiiGM
 
