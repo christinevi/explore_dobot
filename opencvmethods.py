@@ -261,7 +261,7 @@ def find_center_block_green(cap):
         if cv2.waitKey(1) & 0xFF == ord('q'):
             return (centerX, centerY), colorofblock
         
-#works universally for all shapes but this is less accurate... for dobot better to use first two shapes
+#works universally for all shapes but this is less accurate... for dobot better to use first two methods
 def find_center_block_yellow(cap):
     sumX = 0
     sumY = 0
