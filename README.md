@@ -1,4 +1,4 @@
-# Python Setup for DobotMagician using Dobot's API
+# Python Setup for DobotMagician using Dobot's API + Dobot's API with OpenCV and pySerial
 ## Required Equipment and Setup:
 Dobot Magician('s) that are already set up with suction, gripper, and/or conveyer belt
 
@@ -14,13 +14,13 @@ A working webcam setup is required to use opencv (I am using an intel webcam)
 - How to control one Dobot
 - How to control multiple Dobots
 - How to control conveyer belt
-- How to use opencv adjacent to dobots (detecting the largeest areas of yellow and green and capturing the center of that object)(the center of the object is not being used in the project, only the color detection part is)
+- How to use opencv adjacent to dobots (detecting the largest areas of yellow and green and capturing the center of that object)(though the center is captured, it is not being used in the project, only the color detection part is)
 
 ## How to improve this project:
- - coordinate dobot coordinates to the camera coordinate's center of the object(which I have already done), so that pick and place is not hardcoded 
- - train yolo on dobot blocks for streamlined object detection (not sure about this actually)
- - instead of one block by one block, capture multiple cubes on the conveyer belt and calculate center points of each block
  - detect all shapes and then find the center of that object WITHOUT sorting by color
+ - convert dobot coordinates to the camera coordinate's center of the object, so that pick and place is not hardcoded (very useful, can use the center's from my opencv methdos)
+ - instead of one object by one object, capture multiple objects on the conveyer belt and calculate center points of each object
+ - train yolo on dobot blocks for streamlined object detection (not sure about this actually)
 
 ## Packages Needed
 install V2 dobot files and unzip them: https://www.dobot.us/download/dobot-demo-v2-0/ 
@@ -28,11 +28,10 @@ install V2 dobot files and unzip them: https://www.dobot.us/download/dobot-demo-
 install driver suitable for your computer: https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads
 ## Helpful pages
 describes many important features of the dobot api: https://github.com/SERLatBTH/StarterGuide-Dobot-Magician-with-Python
-giv
 
 youtube tutorials on OpenCV: https://www.youtube.com/playlist?list=PLzMcBGfZo4-lUA8uGjeXhBUUzPYc6vZRn
 
-Tech by Tim's github page on OpenCv: https://github.com/techwithtim/OpenCV-Tutorials/blob/main/README.md
+Tech by Tim's github page on OpenCV: https://github.com/techwithtim/OpenCV-Tutorials/blob/main/README.md
 ### Resourses to try pydobot, a peer grown library to control dobots
 https://github.com/sammydick22/pydobotplus: improved pydobot library
 
