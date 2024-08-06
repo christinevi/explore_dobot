@@ -11,12 +11,18 @@ Helpful vid to connect Dobot to gripper: https://www.youtube.com/watch?v=UfoEkJW
 A working webcam setup is required to use opencv (I am using an intel webcam)
 
 ## What will be covered:
-- How to control one Dobot: stackingblockscode
-- How to control multiple Dobots: multipledobotspythondemo and anotherwaymultipledobots
+- How to control one Dobot: stackingblockscode: https://drive.google.com/file/d/1sZoxOxZeYifQYNI0_VIuU0d6AWnhdggi/view?usp=sharing
+  
+- How to control multiple Dobots: multipledobotspythondemo and anotherwaymultipledobots:
+  https://drive.google.com/file/d/14JNtAFIdmHSAzK3MoNBoFvdx_u9PJEej/view?usp=sharing
+  
 - How to control conveyer belt: multipledobotspythondemo, anotherwaymultipledobots, and finalprojectopencv
+  
 - How to use opencv adjacent to dobots (detecting the largest areas of yellow and green and capturing the center of that object)(though the center is captured, it is not being used in the project, only the color detection part is): finalprojectopencv and opencvmethods
-    - find_yellow_block and find_green_block methods work well for any shape other than triangles.
-    - The find_center_yellow_block and find_center_green_block methods work to approximate the center of all shapes, including triangles, as they use the centroid method to do it. However, they are very average at approximating the center compared to the find_yellow_block and find_green_block methods.
+    - find_yellow_block and find_green_block methods work well for any shape other than triangles
+    - The find_center_yellow_block and find_center_green_block methods work to approximate the center of all shapes, including triangles, as they use the centroid method to do it. However, they are very average at approximating the center compared to the find_yellow_block and find_green_block methods
+    - https://drive.google.com/file/d/1OY45W_8M9R6e-G6WpFJ8hmwcoQd__hUc/view?usp=drive_link
+    - https://drive.google.com/file/d/17xvwIs8j7ahAPq5-MYAatMkjl3f_uB1n/view?usp=sharing
 
 ## How to improve this project:
  - detect all shapes and then find the center of that object WITHOUT sorting by color
