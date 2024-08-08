@@ -26,7 +26,7 @@ A working webcam setup is required to use opencv (I am using an intel webcam)
 
 ## How to improve this project:
  - detect all shapes and then find the center of that object WITHOUT sorting by color
- - convert dobot coordinates to the camera coordinate's center of the object, so that pick and place is not hardcoded (very useful, can use the center's from my opencv methdos)
+ - convert dobot coordinates to the camera coordinate's center of the object, so that pick and place is not hardcoded (very useful, can use the centers from my opencv methdos)
  - instead of one object by one object, capture multiple objects on the conveyer belt and calculate center points of each object
  - train yolo on dobot blocks for streamlined object detection (not sure about this actually)
 
