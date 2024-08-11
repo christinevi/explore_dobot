@@ -74,5 +74,7 @@ Custom-made methods with Dobot movements inside them rarely work. The Dobot API 
 
 You must move one dobot at a time. Calling a method that makes one dobot move, then calling another method to make the other dobot move, and then calling the first dobot to move again, will not work. Follow the order I have inside multipledobotspythondemo or anotherwaymultipledobots.
 
+If you are having connectivity issues with your dobots after a while of running code on them, the best thing to do is to unplug the USB drive from your computer and then reconnect the USB drive. Furthermore, if that doesn't work, turn off the dobots, reset your computer, and come back to the dobots and your computer in 30 minutes. Everything should work as good as new.
+
 
 
