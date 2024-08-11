@@ -10,7 +10,7 @@ Helpful vid to connect Dobot to gripper: https://www.youtube.com/watch?v=UfoEkJW
 
 A working webcam setup is required to use opencv (I am using an intel webcam)
 
-## What will be covered:
+## What will be covered
 - How to control one Dobot: stackingblockscode: https://drive.google.com/file/d/1sZoxOxZeYifQYNI0_VIuU0d6AWnhdggi/view?usp=sharing
   
 - How to control multiple Dobots: multipledobotspythondemo and anotherwaymultipledobots:
@@ -24,7 +24,7 @@ A working webcam setup is required to use opencv (I am using an intel webcam)
     - https://drive.google.com/file/d/1OY45W_8M9R6e-G6WpFJ8hmwcoQd__hUc/view?usp=drive_link
     - https://drive.google.com/file/d/17xvwIs8j7ahAPq5-MYAatMkjl3f_uB1n/view?usp=sharing
 
-## How to improve this project:
+## How to improve this project
  - detect all shapes and then find the center of that object WITHOUT sorting by color (can do this with yolo)
  - convert dobot coordinates to the camera coordinate's center of the object, so that pick and place is not hardcoded (very useful, can use the centers from my opencv methdos)
  - instead of one object by one object, capture multiple objects on the conveyer belt and calculate center points of each object
@@ -63,5 +63,16 @@ in the DobotDemoForPython folder read DobotD11Type.py and DobotControl.py to und
 pip install cv2 and pySerial
 
 copy and paste my opencvmethods code into a new file in your virtual workspace and name the file opencvmethods.py if you want to use my finalprojectopencv file
+
+## Tips
+
+Connect the Dobot to Dobot Magician Studio before attempting to write any code. Dobot Magician Studio provides the coordinates of the Dobot's current position, which you can then use to accurately hardcode movements in Python.
+
+The queue commands do not work, whether you set it to 1 or 0, it does not matter, the method will run anyway.
+
+Custom-made methods with Dobot movements inside them rarely work. The Dobot API methods within your custom-made methods will typically call themselves regardless.
+
+You must move one dobot at a time. Calling a method that makes one dobot move, then calling another method to make the other dobot move, and then calling the first dobot to move again, will not work. Follow the order I have inside multipledobotspythondemo or anotherwaymultipledobots.
+
 
 
