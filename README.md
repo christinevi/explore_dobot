@@ -1,4 +1,18 @@
 # Python Setup for DobotMagician using Dobot's API + Dobot's API with OpenCV and pySerial
+
+## Why this Documentation Matters
+
+One of the biggest challenges I encountered while working with the Dobot Magician was the lack of clear documentation for controlling **multiple Dobot Magicians within the same Python script**, especially while **running OpenCV and pySerial at the same time**. Most available tutorials only demonstrate controlling a single Dobot or cover each technology independently, leaving little guidance on how to integrate everything into one working project.
+
+This documentation brings together everything I learned through trial and error, including:
+- Running multiple Dobot Magicians from a single Python program.
+- Using OpenCV for real-time computer vision alongside Dobot control.
+- Integrating pySerial communication with the Dobot API.
+- Controlling peripherals such as the conveyor belt and gripper.
+- Documenting common issues, limitations, and workarounds that are not covered in the official documentation.
+
+The goal is to provide a practical starting point for future Dobot users so they can spend less time debugging setup issues and more time building robotics applications.
+
 ## Required Equipment and Setup:
 Dobot Magician('s) that are already set up with suction, gripper, and/or conveyer belt
 
